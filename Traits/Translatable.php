@@ -3,54 +3,38 @@
 namespace Litepie\Trans\Traits;
 
 use App;
+use Lang;
 
-trait Trans
+trait Translatable
 {
     /**
-      * @var array List of attribute names which should be translated.
-      *
-      * protected $translate = [];
-      */
-     protected $translate = [];
+     * @var array List of attribute names which should be translated.
+     *
+     * protected $translatables = [];
+     */
+    
+    public $translatables = [];
 
     /**
      * Boot the Trans trait for a model.
      *
      * @return void
      */
-    public static function bootTrans()
+    public static function bootTranslatable()
     {
-        static::addSetterManipulator(function ($model, $key, $value) {
-            if ($model->checkGetSetAttribute('translate', $key, $model->table)) {
+        static::addSetterManipulator('translatables.set', function ($model, $key, $value) {
+            if ($model->checkGetSetAttribute('translatables', $key)) {
                 return $model->setTranslation($key, $value);
             }
-
             return $value;
         });
 
-        static::addGetterManipulator(function ($model, $key, $value) {
-            if ($model->checkGetSetAttribute('translate', $key, $model->table)) {
+        static::addGetterManipulator('translatables.get', function ($model, $key, $value) {
+            if ($model->checkGetSetAttribute('translatables', $key)) {
                 return $model->getTranslation($value);
             }
-
             return $value;
         });
-    }
-
-    /**
-     * Returns a collection of fields that will be encrypted.
-     *
-     * @return array
-     */
-    public function getTransAttributes()
-    {
-        if (property_exists(get_called_class(), 'translate')) {
-            $array[$this->table] = array_flip($this->translate);
-
-            return array_dot($array);
-        }
-
-        return [];
     }
 
     /**
@@ -68,6 +52,7 @@ trait Trans
         if (isset($langs[$locale])) {
             return $langs[$locale];
         }
+
     }
 
     /**
@@ -78,15 +63,15 @@ trait Trans
      */
     public function setTranslation($key, $value = null)
     {
+
         $locale = $this->locale();
 
         $langs = $this->getOriginalAttribute($key);
 
-        $langs = $this->decodeLang($langs);
+        $langs                  = $this->decodeLang($langs);
         $langs[$this->locale()] = $value;
-        $value = $this->encodeLang($langs);
-
-        return $this->{$key} = $value;
+        $value                  = $this->encodeLang($langs);
+        return $this->{$key}    = $value;
     }
 
     /**
@@ -140,6 +125,7 @@ trait Trans
     protected function locale()
     {
         return App::getLocale()
-            ?: Lang::getLocale();
+        ?: Lang::getLocale();
     }
+
 }
