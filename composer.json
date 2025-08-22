@@ -1,0 +1,79 @@
+{
+    "name": "litepie/trans",
+    "description": "A modern, production-ready, and well-documented PHP translation package with language negotiation and Laravel integration.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "translation",
+        "internationalization",
+        "i18n",
+        "localization",
+        "l10n",
+        "multilingual",
+        "language",
+        "locale"
+    ],
+    "authors": [
+        {
+            "name": "Litepie Team",
+            "email": "team@litepie.com",
+            "homepage": "https://litepie.com"
+        }
+    ],
+    "homepage": "https://github.com/litepie/trans",
+    "support": {
+        "issues": "https://github.com/litepie/trans/issues",
+        "source": "https://github.com/litepie/trans"
+    },
+    "autoload": {
+        "psr-4": {
+            "Litepie\\Trans\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "illuminate/http": "^9.0|^10.0|^11.0",
+        "illuminate/config": "^9.0|^10.0|^11.0",
+        "illuminate/translation": "^9.0|^10.0|^11.0",
+        "illuminate/routing": "^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0|^11.0",
+        "mockery/mockery": "^1.5",
+        "orchestra/testbench": "^7.0|^8.0|^9.0",
+        "phpstan/phpstan": "^1.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Litepie\\Trans\\TransServiceProvider"
+            ],
+            "aliases": {
+                "Trans": "Litepie\\Trans\\Facades\\Trans"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "cs-check": "vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
