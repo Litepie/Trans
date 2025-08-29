@@ -63,7 +63,7 @@ class LanguageNegotiator
         $this->defaultLocale = $defaultLocale;
         $this->supportedLanguages = $supportedLanguages;
         $this->request = $request;
-        $this->configRepository = $configRepository ?? app('config');
+        $this->configRepository = $configRepository ?? resolve('config');
 
         $this->initializeIntlSupport();
     }

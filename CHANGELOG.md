@@ -5,6 +5,35 @@ All notable changes to the Litepie Trans package will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-08-29
+
+### Added
+- **Laravel 12 compatibility** - Full support for Laravel 12.x
+- **Enhanced middleware** with improved return type declarations
+- **Environment-based configuration** options for better deployment flexibility
+- **Performance optimizations** for Laravel 12's improved container
+- **Memory optimization settings** for better resource management
+- **Query string persistence** configuration options
+- **Route model binding** enhancements for Laravel 12
+
+### Changed
+- **Minimum PHP version** raised to 8.1 for Laravel 12 compatibility
+- **Service provider** updated for Laravel 12's container improvements
+- **Middleware return types** improved with Symfony Response compatibility
+- **Configuration structure** enhanced with environment variable support
+- **Dependencies** updated to support Laravel 9-12
+
+### Enhanced
+- **Type safety** with stricter return type declarations
+- **Container resolution** optimized for Laravel 12
+- **Error handling** improved with Laravel 12's exception handling
+- **URL generation** compatibility with Laravel 12's URL builder
+
+### Performance
+- **Container binding** optimized for Laravel 12's service container
+- **Route caching** improvements for Laravel 12's route system
+- **Memory usage** optimization with Laravel 12's efficiency improvements
+
 ## [2.0.0] - 2025-08-22
 
 ### Added

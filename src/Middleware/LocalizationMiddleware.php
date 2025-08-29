@@ -7,14 +7,14 @@ namespace Litepie\Trans\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Litepie\Trans\Trans;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 
 /**
  * Class LocalizationMiddleware
  *
- * Middleware to handle automatic locale detection and setting.
+ * Laravel 12 compatible middleware for handling automatic locale detection and setting.
  * This middleware should be applied to routes that need localization.
  *
  * @package Litepie\Trans\Middleware
@@ -41,9 +41,9 @@ class LocalizationMiddleware
      *
      * @param Request $request
      * @param Closure $next
-     * @return mixed
+     * @return SymfonyResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): SymfonyResponse
     {
         // Set the locale based on the URL or request
         $locale = $this->determineLocale($request);
@@ -76,21 +76,21 @@ class LocalizationMiddleware
 
         // Check session for saved locale preference
         if ($request->hasSession()) {
-            $sessionLocale = $request->session()->get(config('trans.localeSessionKey', 'locale'));
+            $sessionLocale = $request->session()->get(\config('trans.localeSessionKey', 'locale'));
             if ($sessionLocale && $this->trans->checkLocaleInSupportedLocales($sessionLocale)) {
                 return $sessionLocale;
             }
         }
 
         // Check cookie for saved locale preference
-        $cookieName = config('trans.localeCookie.name', 'locale');
+        $cookieName = \config('trans.localeCookie.name', 'locale');
         $cookieLocale = $request->cookie($cookieName);
         if ($cookieLocale && $this->trans->checkLocaleInSupportedLocales($cookieLocale)) {
             return $cookieLocale;
         }
 
         // Use language negotiation if enabled
-        if (config('trans.useAcceptLanguageHeader', true)) {
+        if (\config('trans.useAcceptLanguageHeader', true)) {
             return null; // Let Trans handle negotiation
         }
 
@@ -110,12 +110,12 @@ class LocalizationMiddleware
         $locale = $locale ?? $this->trans->getCurrentLocale();
 
         // Don't redirect for AJAX requests or if already redirecting
-        if ($request->ajax() || $request->wantsJson()) {
+        if ($request->ajax() || $request->wantsJson() || $request->expectsJson()) {
             return null;
         }
 
         // Check if auto-redirect is enabled
-        if (!config('trans.autoDetectLocale', true)) {
+        if (!\config('trans.autoDetectLocale', true)) {
             return null;
         }
 
@@ -127,7 +127,7 @@ class LocalizationMiddleware
             $response = Redirect::to($localizedUrl, 302);
             
             // Set locale cookie if configured
-            if (config('trans.localeCookie.name')) {
+            if (\config('trans.localeCookie.name')) {
                 $cookie = $this->createLocaleCookie($locale);
                 $response->withCookie($cookie);
             }
@@ -146,9 +146,9 @@ class LocalizationMiddleware
      */
     protected function createLocaleCookie(string $locale)
     {
-        $config = config('trans.localeCookie');
+        $config = \config('trans.localeCookie');
 
-        return cookie(
+        return \cookie(
             $config['name'],
             $locale,
             $config['minutes'],

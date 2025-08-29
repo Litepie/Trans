@@ -2,23 +2,24 @@
 
 [![Latest Version](https://img.shields.io/github/v/release/litepie/trans?style=flat-square)](https://github.com/litepie/trans/releases)
 [![License](https://img.shields.io/github/license/litepie/trans?style=flat-square)](LICENSE)
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.0-8892BF?style=flat-square)](https://php.net)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.1-8892BF?style=flat-square)](https://php.net)
 [![Laravel Version](https://img.shields.io/badge/laravel-%3E%3D9.0-FF2D20?style=flat-square)](https://laravel.com)
 
-A modern, production-ready, and well-documented PHP translation package with advanced language negotiation, URL localization, route translation, and comprehensive Laravel integration.
+A modern, production-ready, and well-documented PHP translation package with advanced language negotiation, URL localization, route translation, and comprehensive Laravel integration. **Now fully compatible with Laravel 12!**
 
 ## ✨ Features
 
 - 🌍 **Automatic Language Detection** - Intelligent locale detection from Accept-Language headers
 - 🔗 **URL-based Locale Switching** - Clean, SEO-friendly localized URLs
 - 🛣️ **Route Translation** - Translate route patterns and parameters
-- ⚡ **Performance Optimized** - Built-in caching and optimization
-- 🔧 **Middleware Integration** - Seamless Laravel middleware support
-- 🎯 **Type Safe** - Full PHP 8+ type declarations and strict types
+- ⚡ **Performance Optimized** - Built-in caching and optimization for Laravel 12
+- 🔧 **Middleware Integration** - Seamless Laravel 12 middleware support
+- 🎯 **Type Safe** - Full PHP 8.1+ type declarations and strict types
 - 📱 **Multi-directional Support** - LTR and RTL language support
 - 🍪 **Session & Cookie Support** - Remember user language preferences
 - 🧪 **Comprehensive Testing** - Full test suite included
 - 📚 **Rich Documentation** - Extensive documentation and examples
+- 🚀 **Laravel 12 Ready** - Fully compatible with the latest Laravel version
 
 ## 🚀 Installation
 

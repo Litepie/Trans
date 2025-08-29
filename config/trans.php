@@ -265,10 +265,36 @@ return [
     |
     */
 
+    /*
+    |--------------------------------------------------------------------------
+    | URL Generation Settings
+    |--------------------------------------------------------------------------
+    |
+    | Configuration options for URL generation and localization.
+    | These settings work with Laravel 12's improved URL generation.
+    |
+    */
+
     'urls' => [
-        'forceHttps' => false,
-        'omitUrlParamsOnRedirect' => false,
-        'redirectToDefaultLocale' => true,
+        'forceHttps' => env('TRANS_FORCE_HTTPS', false),
+        'omitUrlParamsOnRedirect' => env('TRANS_OMIT_PARAMS_ON_REDIRECT', false),
+        'redirectToDefaultLocale' => env('TRANS_REDIRECT_TO_DEFAULT_LOCALE', true),
+        'appendTrailingSlash' => env('TRANS_APPEND_TRAILING_SLASH', false),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Performance Settings
+    |--------------------------------------------------------------------------
+    |
+    | Settings for optimizing performance in Laravel 12.
+    |
+    */
+
+    'performance' => [
+        'enableRouteModelBinding' => env('TRANS_ENABLE_ROUTE_MODEL_BINDING', true),
+        'enableQueryStringPersistence' => env('TRANS_ENABLE_QUERY_STRING_PERSISTENCE', true),
+        'enableMemoryOptimization' => env('TRANS_ENABLE_MEMORY_OPTIMIZATION', true),
     ],
 
 ];

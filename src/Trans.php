@@ -184,7 +184,7 @@ class Trans implements TransInterface
         }
 
         // Set Laravel application locale
-        App::setLocale($this->currentLocale);
+        \Illuminate\Support\Facades\App::setLocale($this->currentLocale);
 
         // Set regional locale for formatting
         $this->setRegionalLocale();

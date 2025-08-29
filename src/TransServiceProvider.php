@@ -33,10 +33,14 @@ class TransServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/trans.php' => config_path('trans.php'),
+            __DIR__ . '/../config/trans.php' => $this->app->configPath('trans.php'),
         ], 'trans-config');
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                // Add console commands here if needed
+            ]);
+        }
     }
 
     /**
