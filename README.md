@@ -444,7 +444,7 @@ This package is open-sourced software licensed under the [MIT license](LICENSE).
 
 ## 🙏 Credits
 
-- **Original Litepie Team** - For the foundation
+- **Original Lavalite Team** - For the foundation
 - **Laravel Community** - For the amazing framework
 - **Contributors** - All the people who have contributed to this project
 
@@ -457,4 +457,4 @@ This package is open-sourced software licensed under the [MIT license](LICENSE).
 
 ---
 
-Made with ❤️ by the [Litepie Team](https://litepie.com)
+Made with ❤️ by the [Lavalite Team](https://litepie.com)

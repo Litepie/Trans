@@ -32,7 +32,7 @@ use Litepie\Trans\Contracts\TransInterface;
  * - Type safety with strict types
  *
  * @package Litepie\Trans
- * @author  Litepie Team
+ * @author  Lavalite Team
  * @version 2.0.0
  */
 class Trans implements TransInterface
